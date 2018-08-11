@@ -1,0 +1,43 @@
+<html>
+<head>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+function loaddata()
+{
+  debugger;
+ var id=document.getElementById( "txt_id" ).value;
+ var mob=document.getElementById( "mobile_no" ).value;
+
+      $.ajax({
+        type : 'POST',
+        url : 'update.php',
+        data:{id : id ,mob : mob,action:'getvalfrom' },
+        success: function (response) {
+            debugger;
+        //alert(response);
+        //print(response);
+        $("p").html(response);
+        },
+        error: function (xhr, status, error) {
+            alert("something wrong");
+        }
+      });
+
+	
+}
+
+</script>
+
+</head>
+<body>
+    
+    <input type="text" id="txt_id" class="form-control"  placeholder="Enter the id" required/>
+    <input type="text" id="mobile_no" class="form-control"  placeholder="Enter the mobile no" required/>
+    <p>Displaying the information here</p>
+</div>
+<button type="button" onclick="loaddata()" >clickme</button>
+</div>
+	 
+</body>
+</html>

@@ -1,0 +1,101 @@
+<html>
+<head>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+function loaddata()
+{
+  debugger;
+ var id=document.getElementById( "txt_id" ).value;
+
+      $.ajax({
+        type : 'GET',
+        url : 'loaddata.php',
+        data:{id : id  },
+        success: function (response) {
+            debugger;
+
+            
+
+        //alert(response);
+        //print(response);
+        $("p").html(response);
+        },
+        error: function (xhr, status, error) {
+            alert("something wrong");
+        }
+      });
+
+	
+}
+function loaddata1()
+{
+  debugger;
+ var id=document.getElementById( "txt_id" ).value;
+
+      $.ajax({
+        type : 'POST',
+        url : 'delete.php',
+        data:{id : id ,action:'getvalfrom' },
+        success: function (response) {
+            debugger;
+
+            
+
+        //alert(response);
+        //print(response);
+        $("p").html(response);
+        },
+        error: function (xhr, status, error) {
+            alert("something wrong");
+        }
+      });
+
+}
+function loaddata3()
+{
+  debugger;
+ var id=document.getElementById( "txt_id1" ).value;
+ var name=document.getElementById( "name" ).value;
+ var mobile_no=document.getElementById( "mobile_no" ).value;
+ var email_id=document.getElementById( "email_id" ).value;
+
+      $.ajax({
+        type : 'POST',
+        url : 'create.php',
+        data:{id : id ,name : name, mobile_no: mobile_no, email_id : email_id,action:'getvalfrom' },
+        success: function (response) {
+            debugger;
+        //alert(response);
+        //print(response);
+        $("h4").html(response);
+        },
+        error: function (xhr, status, error) {
+            alert("something wrong");
+        }
+      });
+
+	
+}
+</script>
+
+</head>
+<body>
+        <h3>Enter the id to view or delete the information</h3>
+    <input type="text" id="txt_id" class="form-control"  placeholder="Enter the id" required/>
+    <p>Displaying the information here</p>
+</div>
+<button type="button" onclick="loaddata1()" >Delete the record</button>
+<button type="button" onclick="loaddata()" >view the record</button>
+<h3>Enter the detail to create account</h3>
+<input type="text" id="txt_id1" class="form-control" placeholder="Enter the ID" />
+<input type="text" id="name" class="form-control" placeholder="Enter the Name" />
+<input type="text" id="mobile_no" class="form-control" placeholder="Enter the mobile No" />
+<input type="text" id="email_id" class="form-control" placeholder="Enter Email id" />
+<h4>Displaying the information here</h4>
+</div>
+<button type="button" onclick="loaddata3()" >Create Account</button>
+</div>
+	 
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+function loaddata()
+{
+  debugger;
+ var id=document.getElementById( "txt_id" ).value;
+ var name=document.getElementById( "name" ).value;
+ var mobile_no=document.getElementById( "mobile_no" ).value;
+ var email_id=document.getElementById( "email_id" ).value;
+
+      $.ajax({
+        type : 'POST',
+        url : 'create.php',
+        data:{id : id ,name : name, mobile_no: mobile_no, email_id : email_id,action:'getvalfrom' },
+        success: function (response) {
+            debugger;
+        //alert(response);
+        //print(response);
+        $("p").html(response);
+        },
+        error: function (xhr, status, error) {
+            alert("something wrong");
+        }
+      });
+
+	
+}
+
+</script>
+
+</head>
+<body>
+    <input type="text" id="txt_id" class="form-control" placeholder="Enter the ID" />
+    <input type="text" id="name" class="form-control" placeholder="Enter the Name" />
+    <input type="text" id="mobile_no" class="form-control" placeholder="Enter the mobile No" />
+    <input type="text" id="email_id" class="form-control" placeholder="Enter Email id" />
+    <p>Displaying the information here</p>
+</div>
+<button type="button" onclick="loaddata()" >clickme</button>
+</div>
+	 
+</body>
+</html>

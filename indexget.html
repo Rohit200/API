@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        debugger;
+        var id=document.getElementById( "txt_id" ).value;
+        debugger;
+        $.get("createtable.php",{id:id}, function(data, status){
+            alert("Data: " + data + "\nStatus: " + status);
+            window.print("Data: " + data + "\nStatus: " + status);
+        });
+    });
+});
+</script>
+</head>
+<body>
+<input type="text" id="txt_id" class="form-control"  placeholder="Enter the Id" required/>
+ </div>
+<button>Get your detail</button>
+
+</body>
+</html>
